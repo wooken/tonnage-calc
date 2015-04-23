@@ -1,9 +1,10 @@
 package main
 
 func main() {
-	var filename string
-	var data []string
-	filename = GetArgs()
-	data = ParseFile(filename)
-	PrintTonnage(data)
+	filename := GetArgs()
+	data := ParseFile(filename)
+	var e Exercises
+	e.WriteExerciseData(data)
+	e.OutputData()
+	e.OutputTonnage()
 }
