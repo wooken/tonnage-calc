@@ -13,8 +13,9 @@ const (
 )
 
 type ExerciseData struct {
-	Name string
-	Data []string
+	Name    string
+	Data    []string
+	Tonnage int
 }
 
 type Exercises []ExerciseData
@@ -29,7 +30,10 @@ func (e *Exercises) WriteExerciseData(data []string) {
 				if isExerciseName(data[j]) {
 					break
 				}
-				(*e)[index].Data = append((*e)[index].Data, fmt.Sprintf("%s", data[j]))
+				dataString := fmt.Sprintf("%s", data[j])
+				(*e)[index].Data = append((*e)[index].Data, dataString)
+				dataInt := extractIntegers(dataString)
+				(*e)[index].Tonnage = (*e)[index].Tonnage + calcTonnage(dataInt)
 			}
 		}
 	}
@@ -51,14 +55,17 @@ func (e *Exercises) OutputTonnage() {
 	totalTonnage := 0
 	for i := range *e {
 		name := regexp.MustCompile(`\s`).Split((*e)[i].Name, 2)
-		fmt.Printf("%s: ", name[1])
-		tonnage := 0
-		for j := range (*e)[i].Data {
-			vals := extractIntegers((*e)[i].Data[j])
-			ton := calcTonnage(vals)
-			tonnage = tonnage + ton
-		}
-		fmt.Println(tonnage)
+		tonnage := (*e)[i].Tonnage
+		fmt.Printf("%s: %d\n", name[1], tonnage)
+		/*
+			tonnage := 0
+			for j := range (*e)[i].Data {
+				vals := extractIntegers((*e)[i].Data[j])
+				ton := calcTonnage(vals)
+				tonnage = tonnage + ton
+			}
+			fmt.Println(tonnage)
+		*/
 		totalTonnage = totalTonnage + tonnage
 	}
 	fmt.Printf("Total: %d\n", totalTonnage)
