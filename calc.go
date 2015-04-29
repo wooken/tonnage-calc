@@ -57,15 +57,6 @@ func (e *Exercises) OutputTonnage() {
 		name := regexp.MustCompile(`\s`).Split((*e)[i].Name, 2)
 		tonnage := (*e)[i].Tonnage
 		fmt.Printf("%s: %d\n", name[1], tonnage)
-		/*
-			tonnage := 0
-			for j := range (*e)[i].Data {
-				vals := extractIntegers((*e)[i].Data[j])
-				ton := calcTonnage(vals)
-				tonnage = tonnage + ton
-			}
-			fmt.Println(tonnage)
-		*/
 		totalTonnage = totalTonnage + tonnage
 	}
 	fmt.Printf("Total: %d\n", totalTonnage)
