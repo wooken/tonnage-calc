@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	ExerciseNameRegexp = `^[A-Z]+\.\s[A-Za-z\s]+$`
+	ExerciseNameRegexp = `^[A-Z0-9]+\.\s[A-Za-z\s]+$`
 	SetDataRegexp      = `^[ivx]+\.\s[0-9]+x[0-9]+\s@[0-9]+$`
 	SplitSetDataRegexp = `\s`
 )
