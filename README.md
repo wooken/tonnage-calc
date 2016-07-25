@@ -2,7 +2,7 @@
 
 ### OBSOLETE
 
-This project is now obsolete and has been replaced by the [online version built on dart](http://github.com/wooken/mpt-log).
+This project is now obsolete and has been replaced by the [online version built in javascript](http://github.com/wooken/mpt-log).
 
 Calculate Tonnage based on Moreira Performance Layout
 
